@@ -17,9 +17,10 @@
         </thead>
         
         <tbody>
+            @for (item of tiposImagenList; track $index) {
             <tr>
-                <td data-label="ID"></td>
-                <td data-label="NOMBRE"></td>            
+                <td data-label="ID">{{item.id}}</td>
+                <td data-label="NOMBRE">{{item.nombre}}</td>            
                 <td data-label="ACCIONES">
                     <div id="contenedorlinks">
                     <div id="editar">
@@ -30,7 +31,8 @@
                     </div>
                     </div>
                 </td>
-            </tr>				
+            </tr>
+            }
         </tbody>
     </table>
     </div>

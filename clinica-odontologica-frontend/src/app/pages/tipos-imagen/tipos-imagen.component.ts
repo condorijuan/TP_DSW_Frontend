@@ -21,8 +21,9 @@ export class TiposImagenComponent {
     getTiposImagen(){
       this.tiposImagenService.getTiposImagen().subscribe({
         next: (result) => {
-          this.tiposImagenList = result.tiposImagen;
+          this.tiposImagenList = result.data;
           console.log(result);
+          console.log(result.tipoImagen);
         },
         error: (err)=>{
           console.log(err);
