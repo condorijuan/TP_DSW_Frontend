@@ -15,6 +15,7 @@ export class ImagenComponent {
     constructor(private imagenesService: ImagenesService) {}
 
     ngOninit(): void {
+      console.log("Hola");
       this.getImagenes();
     }
 
