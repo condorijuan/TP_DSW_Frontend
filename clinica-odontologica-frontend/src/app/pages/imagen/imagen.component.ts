@@ -14,7 +14,7 @@ export class ImagenComponent {
     imagenesList: ImagenesInterface[]=[];
     constructor(private imagenesService: ImagenesService) {}
 
-    ngOninit(): void {
+    ngOnInit(): void {
       console.log("Hola");
       this.getImagenes();
     }

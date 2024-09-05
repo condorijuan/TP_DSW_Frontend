@@ -13,7 +13,7 @@ export const routes: Routes = [
         component: TiposImagenComponent
     },
     {
-        path: 'imagenes',
+        path: 'imagen',
         component: ImagenComponent
     }
 /*     {

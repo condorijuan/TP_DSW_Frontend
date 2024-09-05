@@ -1,7 +1,11 @@
 export interface ImagenesInterface{
     id: number;
     createdAt: Date;
-    tipoImagenId: number;
+    /* tipoImagen: number; */
+    tipoImagen: {
+        id: number;
+        nombre: string;
+    }
     descripcion: string;
     
 }
