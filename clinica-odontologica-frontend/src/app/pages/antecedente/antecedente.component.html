@@ -1,0 +1,43 @@
+<!-- <p>antecedente works!</p> -->
+<div>
+    <h1>Antecedentes</h1>
+    
+    <div id="main-container">
+    <div id="agregarnuevo">
+        <a href="">Agregar Nuevo</a>
+    </div>
+    <table class="table">
+    
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>DESCRIPCION</th>
+                <th>TIPO</th>
+                <!-- <th>FECHA</th> -->                
+                <th>ACCIONES</th>	
+            </tr>
+        </thead>
+        
+        <tbody>
+            @for (item of antecedentesList; track $index) {
+            <tr>
+                <td data-label="ID">{{item.id}}</td>
+                <td data-label="DESCRIPCION">{{item.descripcion}}</td>            
+                <td data-label="TIPO">{{item.tipoantecedente.nombre}}</td>
+                <!-- <td data-label="FECHA">{{item.createdAt}}</td> -->                
+                <td data-label="ACCIONES">
+                    <div id="contenedorlinks">
+                    <div id="editar">
+                        <a href="">Editar</a>
+                    </div>
+                    <div id="eliminar">
+                        <a href="">Eliminar</a>
+                    </div>
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    </div>
+    </div> 
