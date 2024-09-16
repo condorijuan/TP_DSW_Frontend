@@ -1,0 +1,49 @@
+<!-- <p>paciente works!</p> -->
+<div>
+  <h1>paciente</h1>
+
+  <div id="main-container">
+    <div id="agregarnuevo">
+      <a href="">Agregar Nuevo</a>
+    </div>
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NOMBRE</th>
+          <th>APELLIDO</th>
+          <th>GENERO</th>
+          <th>DIRECCION</th>
+          <th>TELEFONO</th>
+          <th>EMAIL</th>
+          <th>ACCIONES</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (item of pacientesList; track $index) {
+        <tr>
+          <td data-label="ID">{{item.id}}</td>
+          <td data-label="NOMBRE">{{item.nombre}}</td>
+          <td data-label="APELLIDO">{{item.apellido}}</td>
+          <td data-label="GENERO">{{item.genero}}</td>
+          <td data-label="DIRECCION">{{item.direccion}}</td>
+          <td data-label="TELEFONO">{{item.telefono}}</td>
+          <td data-label="EMAIL">{{item.email}}</td>
+          <td data-label="ACCIONES">
+            <div id="contenedorlinks">
+              <div id="editar">
+                <a href="">Editar</a>
+              </div>
+              <div id="eliminar">
+                <a href="">Eliminar</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
