@@ -1,0 +1,18 @@
+<!-- <p>agregareditartipoimagen works!</p> -->
+<form class="formulario" [formGroup]="formGroup">
+    
+    <h1>Alta Tipo Imagen</h1>
+     <div class="contenedor">
+                
+         <div class="input-contenedor">         
+         <input type="text" name="txtdescripcion" placeholder="Nombre" formControlName="name">         
+         </div>
+        
+         <div class="agrupabotones">
+			<input type="submit" name="accion" value="Agregar" class="button" (click)="clickAgregar()">
+             <!-- <button (click)="clickAgregar()"></button> -->
+			<input type="submit" name="accion" value="Cancelar" class="button">
+		</div>
+         
+     </div>
+</form>
