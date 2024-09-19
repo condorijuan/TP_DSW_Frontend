@@ -6,13 +6,4 @@ export interface PacienteInterface {
   direccion: string;
   telefono: string;
   email: string;
-  /*imagenes: {
-      id: number;
-      createdAt: Date;
-      tipoImagen: {
-          id: number;
-          nombre: string;
-      }
-      descripcion: string;
-  }[]*/
 }

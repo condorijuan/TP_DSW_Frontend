@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { PacienteInterface } from '../../interfaces/paciente.interface.js';
 import { PacienteService } from '../../services/paciente.service.js';
+import { AgregarEditarPacienteComponent } from '../agregar-editar-paciente/agregar-editar-paciente.component.js';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-paciente',
@@ -10,7 +12,7 @@ import { PacienteService } from '../../services/paciente.service.js';
   styleUrl: './paciente.component.css'
 })
 export class PacienteComponent {
-
+  readonly dialog = inject(MatDialog);
   pacientesList: PacienteInterface[] = [];
   constructor(private PacienteService: PacienteService) { }
 
@@ -33,5 +35,33 @@ export class PacienteComponent {
         console.error('Error fetching pacientes:', err);
       }
     })
+  }
+
+  deletePaciente(id: number) {
+    console.log(id);
+    this.PacienteService.deletePaciente(id).subscribe({
+      next: (result) => {
+        console.log(result);
+        this.getPacientes();
+      },
+      error: (err) => {
+        console.error('Error deleting paciente:', err);
+      }
+    })
+  }
+
+  AgregarEditar(id?: number) {
+
+    const dialogRef = this.dialog.open(AgregarEditarPacienteComponent, {
+      width: '550px',
+      data: { id: id }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('formulario cerrado');
+      if (result) {
+        this.getPacientes();
+      }
+    });
   }
 }
