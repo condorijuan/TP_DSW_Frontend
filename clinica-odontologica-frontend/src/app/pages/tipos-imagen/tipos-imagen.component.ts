@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TiposImagenService } from '../../services/tipos-imagen.service.js';
 import { TiposImagenInterface } from '../../interfaces/tipos-imagen.interface.js';
+import { AgregareditartipoimagenComponent } from '../agregareditartipoimagen/agregareditartipoimagen.component.js';
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-tipos-imagen',
@@ -12,7 +14,7 @@ import { TiposImagenInterface } from '../../interfaces/tipos-imagen.interface.js
 export class TiposImagenComponent {
 
     tiposImagenList: TiposImagenInterface[]=[];
-    constructor(private tiposImagenService: TiposImagenService) {}
+    constructor(private tiposImagenService: TiposImagenService, public dialog: MatDialog) {}
 
     ngOnInit(): void {
       this.getTiposImagen();
@@ -30,4 +32,22 @@ export class TiposImagenComponent {
         }
       })
     } 
-}
+
+    addEditTImagen(){
+      const dialogRef = this.dialog.open(AgregareditartipoimagenComponent, {
+        width: '550px',
+        disableClose: true
+        //data: { id: id }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed')
+        if (result) {
+          this.getTiposImagen();
+        }
+        
+      })
+
+    }
+
+  }   

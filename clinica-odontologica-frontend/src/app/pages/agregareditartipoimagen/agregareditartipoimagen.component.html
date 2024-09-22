@@ -1,17 +1,17 @@
 <!-- <p>agregareditartipoimagen works!</p> -->
-<form class="formulario" [formGroup]="formGroup">
+<form (ngSubmit)="addEditTImagen()" class="formulario" [formGroup]="formGroup">
     
-    <h1>Alta Tipo Imagen</h1>
+    <h2 mat-dialog-title>Alta Tipo Imagen</h2>
      <div class="contenedor">
                 
          <div class="input-contenedor">         
-         <input type="text" name="txtdescripcion" placeholder="Nombre" formControlName="name">         
+         <input type= "text" name="txtdescripcion" placeholder="Nombre" formControlName="name" autocomplete="off">         
          </div>
         
          <div class="agrupabotones">
-			<input type="submit" name="accion" value="Agregar" class="button" (click)="clickAgregar()">
+			<input type="submit" name="accion" value="Agregar" class="button">
              <!-- <button (click)="clickAgregar()"></button> -->
-			<input type="submit" name="accion" value="Cancelar" class="button">
+			<input type="button" name="accion" value="Cancelar" class="button" (click)="cancelar()">
 		</div>
          
      </div>
