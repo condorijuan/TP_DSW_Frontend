@@ -5,6 +5,7 @@ import { ImagenComponent } from './pages/imagen/imagen.component.js';
 import { TipoAntecedenteComponent } from './pages/tipo-antecedente/tipo-antecedente.component.js';
 import { AntecedenteComponent } from './pages/antecedente/antecedente.component.js';
 import { PacienteComponent } from './pages/paciente/paciente.component.js';
+import { OdontogramaComponent } from './pages/odontograma/odontograma.component.js';
 
 export const routes: Routes = [
     {
@@ -30,6 +31,10 @@ export const routes: Routes = [
     {
         path: 'paciente',
         component: PacienteComponent
+    },
+    {
+        path: 'odontograma',
+        component: OdontogramaComponent
     }
     /*     {
             path: '**',
