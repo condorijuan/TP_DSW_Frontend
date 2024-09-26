@@ -25,6 +25,13 @@ input[type="password"]{
     font-size: larger;
     padding: 0px 5px;
 }
+.span{
+    color: red;
+}
+.div-span{
+    text-align: center;
+    margin: 0px 0px 10px 0px;
+}
 .input-contenedor{
     margin-bottom: 15px;
     border: 1px solid #aaa;

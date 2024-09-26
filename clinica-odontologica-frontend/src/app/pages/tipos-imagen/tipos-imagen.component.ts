@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { TiposImagenService } from '../../services/tipos-imagen.service.js';
 import { TiposImagenInterface } from '../../interfaces/tipos-imagen.interface.js';
 import { AgregareditartipoimagenComponent } from '../agregareditartipoimagen/agregareditartipoimagen.component.js';
-import { MatDialog } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tipos-imagen',
@@ -14,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog'
 export class TiposImagenComponent {
 
     tiposImagenList: TiposImagenInterface[]=[];
-    constructor(private tiposImagenService: TiposImagenService, public dialog: MatDialog) {}
+    constructor(private tiposImagenService: TiposImagenService, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
 
     ngOnInit(): void {
       this.getTiposImagen();
@@ -33,7 +34,7 @@ export class TiposImagenComponent {
       })
     } 
 
-    addEditTImagen(){
+    addEditTImagen(id?: number){
       const dialogRef = this.dialog.open(AgregareditartipoimagenComponent, {
         width: '550px',
         disableClose: true
@@ -48,6 +49,20 @@ export class TiposImagenComponent {
         
       })
 
+    }
+
+    deleteTImagen(id: any) {
+      console.log(id)
+      this.tiposImagenService.deleteTiposImagen(id).subscribe(() => {
+        this.getTiposImagen();
+        this.mensajeExito();
+      })
+    }
+
+    mensajeExito() {
+      this._snackBar.open('La persona fue eliminada con exito', '', {
+        duration: 2000
+      });
     }
 
   }   

@@ -3,12 +3,14 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { MatDialogRef } from '@angular/material/dialog';
 import { TiposImagenInterface } from '../../interfaces/tipos-imagen.interface.js';
 import { TiposImagenService } from '../../services/tipos-imagen.service.js';
-import { MatSnackBar } from '@angular/material/snack-bar'
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-agregareditartipoimagen',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgIf],
   templateUrl: './agregareditartipoimagen.component.html',
   styleUrl: './agregareditartipoimagen.component.css'
 })
@@ -22,8 +24,10 @@ export class AgregareditartipoimagenComponent {
   constructor(public dialogRef: MatDialogRef<AgregareditartipoimagenComponent>,
     private fb: FormBuilder, private _tipoImagenService: TiposImagenService, private _snackBar: MatSnackBar) {
       this.formGroup = this.fb.group({
-        name: ['', Validators.required]
+        name: ['', Validators.required],
       })
+
+      //this.formGroup.untouched
     }
 
   ngOnInit(): void {
@@ -40,9 +44,15 @@ export class AgregareditartipoimagenComponent {
   }
 
   addEditTImagen() {
+
+    if (this.formGroup.invalid) {
+      return;
+    }
+
     //const nombre = this.formGroup.value.name;
 /*     const nombre = this.formGroup.get('name')?.value;
     console.log(nombre) */
+    console.log(this.formGroup);
     const tipoImagen: TiposImagenInterface = {
       nombre: this.formGroup.value.name
     }
@@ -53,7 +63,7 @@ export class AgregareditartipoimagenComponent {
       this.dialogRef.close(true);
       console.log('tipoImagen agregado con exito!');
     })
-
+    console.log('soy return invalid')
   }
 
   mensajeExito(nombre: string) {
@@ -61,5 +71,7 @@ export class AgregareditartipoimagenComponent {
       duration: 2000
     });
   }
+
+  
 
 }
