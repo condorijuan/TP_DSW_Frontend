@@ -1,0 +1,22 @@
+<!-- <p>agregareditartipoimagen works!</p> -->
+<form (ngSubmit)="addEditTImagen()" class="formulario" [formGroup]="formGroup">
+    
+    <h2 mat-dialog-title>{{ operacion }} Tipo Imagen</h2>
+     <div class="contenedor">
+                
+         <div class="input-contenedor">         
+         <input type= "text" name="txtdescripcion" placeholder="Nombre" formControlName="name" autocomplete="off">       
+         </div>
+         <div class="div-span">
+         <span class="span" *ngIf="(formGroup.touched || formGroup.dirty) && formGroup.invalid">El campo es requerido</span> 
+        </div>
+         <!-- touched: {{formGroup.touched}} --> 
+         <!-- invalid: {{formGroup.invalid}} -->      
+         <div class="agrupabotones">
+			<input type="submit" name="accion" value="Aceptar" class="button">
+             <!-- <button (click)="clickAgregar()"></button> -->
+			<input type="button" name="accion" value="Cancelar" class="button" (click)="cancelar()">
+		</div>
+         
+     </div>
+</form>

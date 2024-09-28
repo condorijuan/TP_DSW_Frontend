@@ -4,7 +4,8 @@
     
     <div id="main-container">
     <div id="agregarnuevo">
-        <a href="">Agregar Nuevo</a>
+        <!-- <a href="/agregareditartipoimagen">Agregar Nuevo</a> -->
+        <a (click)="addEditTImagen()" >Agregar Nuevo</a>
     </div>
     <table class="table">
     
@@ -24,10 +25,10 @@
                 <td data-label="ACCIONES">
                     <div id="contenedorlinks">
                     <div id="editar">
-                        <a href="">Editar</a>
+                        <a (click)="addEditTImagen(item.id)">Editar</a>
                     </div>
                     <div id="eliminar">
-                        <a href="">Eliminar</a>
+                        <a (click)="deleteTImagen(item.id)">Eliminar</a>
                     </div>
                     </div>
                 </td>

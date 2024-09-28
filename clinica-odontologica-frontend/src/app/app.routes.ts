@@ -4,7 +4,7 @@ import { TiposImagenComponent } from './pages/tipos-imagen/tipos-imagen.componen
 import { ImagenComponent } from './pages/imagen/imagen.component.js';
 import { TipoAntecedenteComponent } from './pages/tipo-antecedente/tipo-antecedente.component.js';
 import { AntecedenteComponent } from './pages/antecedente/antecedente.component.js';
-import { PacienteComponent } from './pages/paciente/paciente.component.js';
+import { AgregareditartipoimagenComponent } from './pages/agregareditartipoimagen/agregareditartipoimagen.component.js';
 
 export const routes: Routes = [
     {
@@ -27,12 +27,12 @@ export const routes: Routes = [
         path: 'antecedente',
         component: AntecedenteComponent
     },
-    {
-        path: 'paciente',
-        component: PacienteComponent
-    }
-    /*     {
-            path: '**',
-            redirectTo: '/home', pathMatch: 'full'
-        } */
+     {
+        path: 'agregareditartipoimagen',
+        component: AgregareditartipoimagenComponent
+    }, 
+/*     {
+        path: '**',
+        redirectTo: '/home', pathMatch: 'full'
+    } */
 ];
