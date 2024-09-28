@@ -92,14 +92,14 @@ export class AgregareditartipoimagenComponent {
       // Es agregar
       this._tipoImagenService.addTipoImagen(tipoImagen).subscribe(() => {
         this.mensajeExito(tipoImagen.nombre, 'agregada');
-        //this.dialogRef.close(true);
+        this.dialogRef.close(true);
         console.log('tipoImagen agregado con exito!');
       })
     } else {
       //Es editar
       this._tipoImagenService.updateTipoImagen(this.id, tipoImagen).subscribe(data => {
         this.mensajeExito(tipoImagen.nombre, 'actualizada');
-        //this.dialogRef.close(true);
+        this.dialogRef.close(true);
       })
     }
     this.dialogRef.close(true);

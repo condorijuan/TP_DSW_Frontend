@@ -47,7 +47,7 @@ export class TiposImagenComponent {
         if (result) {
           this.getTiposImagen();
         }
-        this.getTiposImagen();
+        //this.getTiposImagen();
       })
 
     }
