@@ -27,10 +27,10 @@ export const routes: Routes = [
         path: 'antecedente',
         component: AntecedenteComponent
     },
-/*     {
+     {
         path: 'agregareditartipoimagen',
         component: AgregareditartipoimagenComponent
-    } */
+    }, 
 /*     {
         path: '**',
         redirectTo: '/home', pathMatch: 'full'

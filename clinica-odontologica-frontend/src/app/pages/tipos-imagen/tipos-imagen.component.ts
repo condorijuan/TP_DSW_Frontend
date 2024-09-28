@@ -25,8 +25,8 @@ export class TiposImagenComponent {
       this.tiposImagenService.getTiposImagen().subscribe({
         next: (result) => {
           this.tiposImagenList = result.data;
-          console.log(result);
-          console.log(result.tipoImagen);
+          //console.log(result);
+          //console.log(result.tipoImagen);
         },
         error: (err)=>{
           console.log(err);
@@ -35,10 +35,11 @@ export class TiposImagenComponent {
     } 
 
     addEditTImagen(id?: number){
+      //console.log(id)
       const dialogRef = this.dialog.open(AgregareditartipoimagenComponent, {
         width: '550px',
-        disableClose: true
-        //data: { id: id }
+        disableClose: true,
+        data: { id: id }
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -46,7 +47,7 @@ export class TiposImagenComponent {
         if (result) {
           this.getTiposImagen();
         }
-        
+        this.getTiposImagen();
       })
 
     }
