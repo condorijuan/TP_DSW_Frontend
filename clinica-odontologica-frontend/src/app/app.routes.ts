@@ -5,6 +5,9 @@ import { ImagenComponent } from './pages/imagen/imagen.component.js';
 import { TipoAntecedenteComponent } from './pages/tipo-antecedente/tipo-antecedente.component.js';
 import { AntecedenteComponent } from './pages/antecedente/antecedente.component.js';
 import { AgregareditartipoimagenComponent } from './pages/agregareditartipoimagen/agregareditartipoimagen.component.js';
+import { DientesComponent } from './pages/dientes/dientes.component.js';
+import { PacienteComponent } from './pages/paciente/paciente.component.js';
+import { OdontogramaComponent } from './pages/odontograma/odontograma.component.js';
 
 export const routes: Routes = [
     {
@@ -27,12 +30,25 @@ export const routes: Routes = [
         path: 'antecedente',
         component: AntecedenteComponent
     },
-     {
+    {
         path: 'agregareditartipoimagen',
         component: AgregareditartipoimagenComponent
-    }, 
-/*     {
-        path: '**',
-        redirectTo: '/home', pathMatch: 'full'
-    } */
+    },
+    {
+        path: 'dientes/:id_odontograma',
+        component: DientesComponent
+    },
+    {
+        path: 'paciente',
+        component: PacienteComponent
+    },
+    {
+        path: 'odontograma',
+        component: OdontogramaComponent
+    },
+
+    /*     {
+            path: '**',
+            redirectTo: '/home', pathMatch: 'full'
+        } */
 ];

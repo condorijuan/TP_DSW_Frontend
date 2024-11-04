@@ -3,11 +3,12 @@ import { OdontogramaService } from '../../services/odontograma.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AgregarEditarOdontogramaComponent } from '../agregar-editar-odontograma/agregar-editar-odontograma.component';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-odontograma',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './odontograma.component.html',
   styleUrl: './odontograma.component.css'
 })

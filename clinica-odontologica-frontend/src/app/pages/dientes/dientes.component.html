@@ -1,42 +1,40 @@
-<!-- <p>paciente works!</p> -->
+
 <div>
-  <h1>paciente</h1>
+  <h1>Dientes</h1>
 
   <div id="main-container">
-    <div id="agregarnuevo">
+    <!-- <div id="agregarnuevo">
       <a (click)="AgregarEditar()">Agregar Nuevo</a>
-    </div>
+    </div> -->
     <table class="table">
 
       <thead>
         <tr>
           <th>ID</th>
+          <th>CODIGO</th>
           <th>DESCRIPCION</th>
-          <th>Link</th>
-          <th>ID_PACIENTE</th>
-          <th>Fecha</th>
+          <th>ESTADO</th>
           <th>ACCIONES</th>
         </tr>
       </thead>
 
       <tbody>
-        @for (item of odontogramasList; track $index) {
+        @for (item of DientesList; track $index) {
         <tr>
           <td data-label="ID">{{item.id}}</td>
+          <td data-label="CODIGO">{{item.codigo}}</td>
           <td data-label="DESCRIPCION">{{item.descripcion}}</td>
-          <td data-label="Link">{{item.link}}</td>
-          <td data-label="ID_PACIENTE">{{item.paciente}}</td>
-          <td data-label="Fecha">{{item.fecha | date:'dd/MM/YYYY'}}</td>
+          <td data-label="ESTADO">{{item.estado}}</td>
           <td data-label="ACCIONES">
             <div id="contenedorlinks">
-              <div id="ver">
-                <a [routerLink]="['/dientes',item.id]">Ver</a>
+              <div id="editar">
+                <a (click)="VerCaras(item.id)">Caras</a>
               </div>
               <div id="editar">
-                <a (click)="AgregarEditar(item.id)">Editar</a>
+                <a (click)="agregarEditar(item.id)">Editar</a>
               </div>
               <div id="eliminar">
-                <a (click)="deleteOdontograma(item.id)">Eliminar</a>
+                <a href="#" (click)="deleteDiente(item)">Eliminar</a>
               </div>
             </div>
           </td>
