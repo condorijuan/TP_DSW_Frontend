@@ -6,12 +6,12 @@ import { EditarDientesComponent } from '../editar-dientes/editar-dientes.compone
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { dienteInterface } from '../../interfaces/diente.interface.js';
-import { CarasComponent } from '../caras/caras.component.js';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-dientes',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './dientes.component.html',
   styleUrl: './dientes.component.css'
 })
@@ -19,13 +19,13 @@ export class DientesComponent implements OnInit {
   private activeRoute = inject(ActivatedRoute);
   private dialog = inject(MatDialog);
   DientesList: any[] = [];
-  public id: number | undefined;
+  public id_odontograma: number | undefined;
   constructor(private route: ActivatedRoute, private DientesService: DientesService) { }
 
   ngOnInit(): void {
     this.activeRoute.params.subscribe(params => {
       if (params['id_odontograma']) {
-        this.id = params['id_odontograma'];
+        this.id_odontograma = params['id_odontograma'];
         this.getDientes(params['id_odontograma']);
       }
     });
@@ -65,14 +65,14 @@ export class DientesComponent implements OnInit {
     });
   }
 
-  VerCaras(id: number) {
+  /* VerCaras(id: number) {
     console.log(id);
     const dialogRef = this.dialog.open(CarasComponent, {
       width: '80vw', // Ajusta el ancho del diálogo
       panelClass: 'custom-dialog-container', // Clase CSS personalizada
       data: { id: id }
     });
-  }
+  } */
 
   deleteDiente(item: dienteInterface) {
     console.log(item.id);

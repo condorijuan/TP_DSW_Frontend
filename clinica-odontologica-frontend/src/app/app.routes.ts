@@ -8,6 +8,7 @@ import { AgregareditartipoimagenComponent } from './pages/agregareditartipoimage
 import { DientesComponent } from './pages/dientes/dientes.component.js';
 import { PacienteComponent } from './pages/paciente/paciente.component.js';
 import { OdontogramaComponent } from './pages/odontograma/odontograma.component.js';
+import { CarasComponent } from './pages/caras/caras.component.js';
 
 export const routes: Routes = [
     {
@@ -46,6 +47,10 @@ export const routes: Routes = [
         path: 'odontograma',
         component: OdontogramaComponent
     },
+    {
+        path: 'caras/:id_diente',
+        component: CarasComponent
+    }
 
     /*     {
             path: '**',

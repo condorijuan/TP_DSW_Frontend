@@ -1,29 +1,31 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { dienteInterface } from '../../interfaces/diente.interface.js';
-import { DientesService } from '../../services/dientes.service.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf } from '@angular/common';
+import { CarasService } from '../../services/caras.service.js';
+import { caraInterface } from '../../interfaces/cara.inteface.js';
+
 
 @Component({
-  selector: 'app-editar-dientes',
+  selector: 'app-editar-caras',
   standalone: true,
   imports: [NgIf, ReactiveFormsModule],
-  templateUrl: './editar-dientes.component.html',
-  styleUrls: ['./editar-dientes.component.css']
+  templateUrl: './editar-caras.component.html',
+  styleUrl: './editar-caras.component.css'
 })
-export class EditarDientesComponent {
+export class EditarCarasComponent {
   formGroup: FormGroup;
   operacion: string = 'Agregar ';
   id: number | undefined;
 
   errorMessage: string | undefined;
 
-  constructor(public dialogRef: MatDialogRef<EditarDientesComponent>,
-    private fb: FormBuilder, private DientesService: DientesService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(public dialogRef: MatDialogRef<EditarCarasComponent>,
+    private fb: FormBuilder, private CarasService: CarasService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.formGroup = this.fb.group({
+      nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
       estado: ['', Validators.required],
     })
@@ -47,10 +49,11 @@ export class EditarDientesComponent {
 
   getDiente(id: number) {
     //console.log(id);
-    this.DientesService.getDiente(id).subscribe(result => {
+    this.CarasService.getcarabyid(id).subscribe(result => {
       console.log(result);
       console.log({ result });
       this.formGroup.setValue({
+        nombre: result.data.nombre,
         descripcion: result.data.descripcion,
         estado: result.data.estado
       })
@@ -61,23 +64,22 @@ export class EditarDientesComponent {
     this.dialogRef.close(false);
   }
 
-  addEditDiente() {
-
+  addEditCara() {
+    console.log('Eliminando cara');
     if (this.formGroup.invalid) {
       return;
     }
-    const diente: dienteInterface = {
+    const cara: caraInterface = {
       id: this.formGroup.value.id,
-      codigo: this.formGroup.value.codigo,
+      nombre: this.formGroup.value.nombre,
       descripcion: this.formGroup.value.descripcion,
       estado: this.formGroup.value.estado,
-      odontograma_id: this.formGroup.value.odontograma_id
+      diente: this.formGroup.value.odontograma_id
     }
-    console.log(diente);
 
     if (this.id !== undefined) {
       //editar diente
-      this.DientesService.updateDiente(this.id, diente).subscribe(data => {
+      this.CarasService.updateCara(this.id, cara).subscribe(data => {
         this.mensajeExito('actualizado', this.id);
         this.dialogRef.close(true);
       })
@@ -85,7 +87,7 @@ export class EditarDientesComponent {
     else {
       console.error('Error al editar info del diente');
     }
-    //Es editar
+
     this.dialogRef.close(true);
   }
 
@@ -100,6 +102,5 @@ export class EditarDientesComponent {
       duration: 2000
     });
   }
-
 
 }

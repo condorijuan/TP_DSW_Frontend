@@ -3,5 +3,5 @@ export interface caraInterface {
   nombre: string;
   descripcion: string;
   estado: string;
-  diente_id: number;
+  diente: number;
 }

@@ -20,4 +20,8 @@ export class CarasService {
   updateCara(id: number, cara: any): Observable<any> {
     return this.httpclient.put(`${this.urlCaras}/${id}`, cara);
   }
+
+  getcarabyid(id: number): Observable<any> {
+    return this.httpclient.get(`${this.urlCaras}/${id}`);
+  }
 }

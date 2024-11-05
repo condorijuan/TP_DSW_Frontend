@@ -1,0 +1,28 @@
+<!-- <p>agregareditartipoimagen works!</p> -->
+<form (ngSubmit)="addEditCara()" class="formulario" [formGroup]="formGroup">
+
+  <h2 mat-dialog-title>Editar caras</h2>
+  <div class="contenedor">
+
+    <div class="input-contenedor">
+      <input type="text" name="txtdescripcion" placeholder="nombre" formControlName="nombre" autocomplete="off">
+    </div>
+    <div class="input-contenedor">
+      <input type="text" name="txtdescripcion" placeholder="descripcion" formControlName="descripcion"
+        autocomplete="off">
+    </div>
+    <div class="input-contenedor">
+      <input type="text" name="txtdescripcion" placeholder="estado" formControlName="estado" autocomplete="off">
+    </div>
+    <div class="div-span">
+      <span class="span" *ngIf="(formGroup.touched || formGroup.dirty) && formGroup.invalid">El campo es
+        requerido</span>
+    </div>
+
+    <div class="agrupabotones">
+      <input type="submit" name="accion" value="Aceptar" class="button">
+      <input type="button" name="accion" value="Cancelar" class="button" (click)="cancelar()">
+    </div>
+
+  </div>
+</form>

@@ -28,7 +28,8 @@
           <td data-label="ACCIONES">
             <div id="contenedorlinks">
               <div id="editar">
-                <a (click)="VerCaras(item.id)">Caras</a>
+                <!-- <a (click)="VerCaras(item.id)">Caras</a> -->
+                <a [routerLink]="['/caras',item.id]">Ver</a>
               </div>
               <div id="editar">
                 <a (click)="agregarEditar(item.id)">Editar</a>

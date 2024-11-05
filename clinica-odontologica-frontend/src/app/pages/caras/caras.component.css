@@ -1,114 +1,132 @@
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
 }
 
-.contenedor {
-  width: 100%;
-  padding: 15px;
-}
-
-.formulario {
-  background: #fff;
-  margin-top: 2px;
-  padding: 3px;
-}
-
-h2 {
+h1 {
   text-align: center;
-  color: #1a2537;
+  color: #ffffff;
   font-size: 40px;
+  margin-top: 150px;
 }
 
-input[type="text"],
-input[type="password"] {
-  font-size: 20px;
-  width: 100%;
-  padding: 10px;
-  border: none;
-  height: 50px;
-  font-size: larger;
-  padding: 0px 5px;
-}
-
-.span {
-  color: red;
-}
-
-.div-span {
-  text-align: center;
-  margin: 0px 0px 10px 0px;
-}
-
-.input-contenedor {
-  margin-bottom: 15px;
-  border: 1px solid #aaa;
-}
-
-.icon {
-  min-width: 50px;
-  text-align: center;
-  color: #999;
-}
-
-.button {
-  border: none;
-  width: 100%;
-  color: white;
-  font-size: 20px;
-  background: #1a2537;
-  padding: 15px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: -3px 2px;
-}
-
-.button:hover {
-  background: cadetblue;
-}
-
-.agrupabotones {
-  display: inline-flex;
-  width: 100%;
-
-}
-
-p {
-  text-align: center;
-}
-
-.link {
+a {
   text-decoration: none;
-  color: #1a2537;
-  font-weight: 600;
+  color: black;
 }
 
-.link:hover {
-  color: cadetblue;
-}
-
-@media(min-width:768px) {
-  .formulario {
-    margin: auto;
-    width: 500px;
-    margin-top: 2px;
-    border-radius: 2%;
-  }
-}
-
-.custom-dialog-container {
-  max-width: 100% !important;
-  width: 100vw !important;
-  height: 80vh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-.cdk-overlay-pane {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#main-container {
+  margin: 10px auto;
+  max-width: 70%;
+  width: 100%;
 }
 
 table {
+  background-color: #f8f8f8;
+  text-align: center;
   width: 100%;
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  /* table-layout: fixed; */
+}
+
+#agregarnuevo {
+  text-align: center;
+  margin: 2px 0px;
+  padding: 5px 0px;
+  border-radius: 5px;
+  width: 150px;
+  background-color: rgba(1, 1, 1, 0.7);
+}
+
+#agregarnuevo a {
+  color: white;
+}
+
+#agregarnuevo:hover {
+  background-color: #685cfe;
+}
+
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #0a0a0a;
+}
+
+table th,
+table td {
+  font-size: 14px;
+  padding: 3px;
+  text-align: center;
+}
+
+table thead th {
+  text-transform: uppercase;
+  background-color: #ddd;
+}
+
+table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#editar {
+  text-align: center;
+  margin: 2px 2px;
+  padding: 5px 0px;
+  border-radius: 5px;
+  width: 50px;
+  background-color: rgb(1, 1, 1);
+}
+
+#editar a {
+  color: white;
+}
+
+#editar:hover {
+  background-color: #685cfe;
+}
+
+#eliminar {
+  text-align: center;
+  margin: 2px 2px;
+  padding: 5px 0px;
+  border-radius: 5px;
+  width: 60px;
+  background-color: rgba(1, 1, 1);
+}
+
+#eliminar a {
+  color: white;
+}
+
+#eliminar:hover {
+  background-color: #685cfe;
+}
+
+#ver {
+  text-align: center;
+  margin: 2px 2px;
+  padding: 5px 0px;
+  border-radius: 5px;
+  width: 60px;
+  background-color: rgba(1, 1, 1);
+}
+
+#ver a {
+  color: white;
+}
+
+#ver:hover {
+  background-color: #685cfe;
+}
+
+#contenedorlinks {
+  display: inline-flex;
 }
