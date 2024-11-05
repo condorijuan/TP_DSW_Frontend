@@ -62,7 +62,7 @@ export class EditarDientesComponent {
     this.dialogRef.close(false);
   }
 
-  addEditTImagen() {
+  addEditDiente() {
 
     if (this.formGroup.invalid) {
       return;
@@ -79,7 +79,7 @@ export class EditarDientesComponent {
     if (this.id !== undefined) {
       //editar diente
       this.DientesService.updateDiente(this.id, diente).subscribe(data => {
-        this.mensajeExito(diente.codigo, 'actualizado');
+        this.mensajeExito('actualizado', this.id);
         this.dialogRef.close(true);
       })
     }
@@ -90,7 +90,7 @@ export class EditarDientesComponent {
     this.dialogRef.close(true);
   }
 
-  mensajeExito(id: number, operacion: string) {
+  mensajeExito(operacion: string, id?: number) {
     this._snackBar.open(`El dienten ${id} fue ${operacion} con exito`, '', {
       duration: 2000
     });

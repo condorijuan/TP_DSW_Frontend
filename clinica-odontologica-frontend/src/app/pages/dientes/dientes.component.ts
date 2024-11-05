@@ -6,6 +6,7 @@ import { EditarDientesComponent } from '../editar-dientes/editar-dientes.compone
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { dienteInterface } from '../../interfaces/diente.interface.js';
+import { CarasComponent } from '../caras/caras.component.js';
 
 @Component({
   selector: 'app-dientes',
@@ -52,7 +53,7 @@ export class DientesComponent implements OnInit {
   agregarEditar(id: number) {
     console.log('abriendo formulario');
     const dialogRef = this.dialog.open(EditarDientesComponent, {
-      width: '550px',
+      width: '80%',
       data: { id: id }
     });
 
@@ -61,6 +62,15 @@ export class DientesComponent implements OnInit {
       if (result) {
         this.getDientes(id);
       }
+    });
+  }
+
+  VerCaras(id: number) {
+    console.log(id);
+    const dialogRef = this.dialog.open(CarasComponent, {
+      width: '80vw', // Ajusta el ancho del diálogo
+      panelClass: 'custom-dialog-container', // Clase CSS personalizada
+      data: { id: id }
     });
   }
 
@@ -88,7 +98,4 @@ export class DientesComponent implements OnInit {
 
   }
 
-  VerCaras(id: number) {
-    console.log(id);
-  }
 }
