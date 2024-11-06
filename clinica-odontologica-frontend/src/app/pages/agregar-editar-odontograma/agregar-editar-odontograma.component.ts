@@ -5,6 +5,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OdontogramaService } from '../../services/odontograma.service.js';
+import { DientesService } from '../../services/dientes.service.js';
+import { CarasService } from '../../services/caras.service.js';
+import { concatMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-agregar-editar-odontograma',
@@ -27,10 +31,13 @@ export class AgregarEditarOdontogramaComponent {
   rellenado: string = 'Agregar ';
   id: number | undefined;
   form: FormGroup;
-  constructor(private fb: FormBuilder, private OdontogramaService: OdontogramaService, @Inject(MAT_DIALOG_DATA) public data: any) {
+  numeros: number[] = [];
+  constructor(private fb: FormBuilder, private OdontogramaService: OdontogramaService, @Inject(MAT_DIALOG_DATA) public data: any,
+    private DientesService: DientesService, private CarasService: CarasService) {
     this.form = this.fb.group({
       descripcion: ['', Validators.required],
       link: ['', Validators.required],
+      id_paciente: ['', Validators.required]
     });
     this.id = data.id;
   }
@@ -71,6 +78,7 @@ export class AgregarEditarOdontogramaComponent {
       descripcion: this.form.value.descripcion,
       link: this.form.value.link,
       fecha: new Date(),
+      paciente: this.form.value.id_paciente
     }
     console.log(this.form);
 
@@ -87,15 +95,113 @@ export class AgregarEditarOdontogramaComponent {
       return;
     } else {
 
-      this.OdontogramaService.addOdontograma(odontograma).subscribe({
+      /* this.OdontogramaService.addOdontograma(odontograma).subscribe({
         next: (result) => {
           console.log(result);
+          const newId = result.data.id;
+          this.numeros = this.generarNumeros();
+          for (let i = 0; i < 32; i++) {
+            const diente = {
+              codigo: this.numeros[i],
+              descripcion: '',
+              estado: '',
+              odontograma_id: newId
+            }
+            this.DientesService.addDiente(diente).subscribe(
+              {
+                next: (result) => {
+                  const id_diente = result.data.id;
+                  for (let j = 0; j < 5; j++) {
+                    const cara = {
+                      nombre: '',
+                      descripcion: '',
+                      estado: '',
+                      diente: id_diente
+                    }
+                    this.CarasService.addCara(cara).subscribe({
+                      next: (result) => {
+                        console.log(result);
+                      },
+                      error: (err) => {
+                        console.error('Error adding cara:', err);
+                      }
+                    });
+
+                  }
+                }
+              }
+            );
+          }
+
           this.dialogRef.close(true);
         },
         error: (err) => {
           console.error('Error adding odontograma:', err);
         }
-      })
+      }) */
+
+      this.OdontogramaService.addOdontograma(odontograma).subscribe({
+        next: (result) => {
+          console.log(result);
+          const newId = result.data.id;
+          this.numeros = this.generarNumeros();
+
+          // Bucle para agregar cada diente secuencialmente
+          this.numeros.forEach((codigo, index) => {
+            const diente = {
+              codigo: codigo,
+              descripcion: '',
+              estado: '',
+              odontograma: result.data.id
+            };
+
+            // Agregar diente y luego sus caras de forma secuencial
+            this.DientesService.addDiente(diente).pipe(
+              concatMap(resultDiente => {
+                const id_diente = resultDiente.data.id;
+
+                // Crear 5 caras para el diente de forma secuencial
+                return of(...Array(5).fill(null)).pipe(
+                  concatMap(() => {
+                    const cara = {
+                      nombre: '',
+                      descripcion: '',
+                      estado: '',
+                      diente: id_diente
+                    };
+                    return this.CarasService.addCara(cara);
+                  })
+                );
+              })
+            ).subscribe({
+              next: (resultCara) => {
+                console.log(resultCara);
+              },
+              error: (err) => {
+                console.error('Error adding diente o cara:' + { diente }, err);
+              }
+            });
+          });
+          this.dialogRef.close(true);
+        },
+        error: (err) => {
+          console.error('Error adding odontograma:', err);
+        }
+      });
     }
+  }
+
+  generarNumeros() {
+    const numeros: number[] = [];
+
+    for (let i = 1; i <= 4; i++) {
+      const inicio = i * 10 + 1;
+      const fin = i * 10 + 8;
+
+      for (let j = inicio; j <= fin; j++) {
+        numeros.push(j);
+      }
+    }
+    return numeros;
   }
 }

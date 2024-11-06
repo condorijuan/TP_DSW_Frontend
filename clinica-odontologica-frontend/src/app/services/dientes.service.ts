@@ -28,4 +28,9 @@ export class DientesService {
   deleteDiente(id: number): Observable<any> {
     return this.httpclient.delete(`${this.urlDientes}/${id}`);
   }
+
+  addDiente(diente: any): Observable<any> {
+    return this.httpclient.post(this.urlDientes, diente).pipe(res => res);
+  }
+
 }
