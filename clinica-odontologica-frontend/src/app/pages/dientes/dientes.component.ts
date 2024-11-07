@@ -98,6 +98,9 @@ export class DientesComponent implements OnInit {
     }
     this.DientesService.updateDiente(item.id, diente).subscribe()
 
+    if (this.id_odontograma) {
+      this.getDientes(this.id_odontograma);
+    }
   }
 
 }
