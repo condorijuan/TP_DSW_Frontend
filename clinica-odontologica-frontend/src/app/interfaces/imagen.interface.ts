@@ -1,4 +1,4 @@
-export interface ImagenesInterface{
+export interface ImagenInterface{
     id: number;
     createdAt: Date;
     /* tipoImagen: number; */

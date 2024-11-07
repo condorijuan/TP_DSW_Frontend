@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ImagenesInterface } from '../../interfaces/imagenes.interface.js';
-import { ImagenesService } from '../../services/imagenes.service.js';
+import { ImagenInterface } from '../../interfaces/imagen.interface.js';
+import { ImagenesService } from '../../services/imagen.service.js';
 
 @Component({
   selector: 'app-imagen',
@@ -11,7 +11,7 @@ import { ImagenesService } from '../../services/imagenes.service.js';
 })
 export class ImagenComponent {
 
-    imagenesList: ImagenesInterface[]=[];
+    imagenesList: ImagenInterface[]=[];
     constructor(private imagenesService: ImagenesService) {}
 
     ngOnInit(): void {

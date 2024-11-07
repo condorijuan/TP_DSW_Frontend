@@ -5,6 +5,10 @@ import { ImagenComponent } from './pages/imagen/imagen.component.js';
 import { TipoAntecedenteComponent } from './pages/tipo-antecedente/tipo-antecedente.component.js';
 import { AntecedenteComponent } from './pages/antecedente/antecedente.component.js';
 import { AgregareditartipoimagenComponent } from './pages/agregareditartipoimagen/agregareditartipoimagen.component.js';
+import { AgregareditarimagenComponent } from './pages/agregareditarimagen/agregareditarimagen.component.js';
+import { AgregareditartipoantecedenteComponent } from './pages/agregareditartipoantecedente/agregareditartipoantecedente.component.js';
+import { AgregareditarantecedenteComponent } from './pages/agregareditarantecedente/agregareditarantecedente.component.js';
+
 
 export const routes: Routes = [
     {
@@ -30,7 +34,19 @@ export const routes: Routes = [
      {
         path: 'agregareditartipoimagen',
         component: AgregareditartipoimagenComponent
+    },
+    {
+        path: 'agregareditartipoantecedente',
+        component: AgregareditartipoantecedenteComponent
+    },
+    {
+        path: 'agregareditarimagen',
+        component: AgregareditarimagenComponent
     }, 
+    {
+        path: 'agregareditarantecedente',
+        component: AgregareditarantecedenteComponent
+    },               
 /*     {
         path: '**',
         redirectTo: '/home', pathMatch: 'full'
