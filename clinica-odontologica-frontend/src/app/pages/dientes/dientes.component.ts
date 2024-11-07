@@ -27,14 +27,16 @@ export class DientesComponent implements OnInit {
       if (params['id_odontograma']) {
         this.id_odontograma = params['id_odontograma'];
         this.getDientes(params['id_odontograma']);
+      } else {
+        this.id_odontograma = undefined;
       }
     });
   }
 
-  getDientes(id_paciente: number) {
+  getDientes(id_odontograma: number) {
     console.log("Hola Mundo");
-    console.log(id_paciente);
-    this.DientesService.getDienteById_Odontograma(id_paciente).subscribe({
+    console.log(id_odontograma);
+    this.DientesService.getDienteById_Odontograma(id_odontograma).subscribe({
       next: (result) => {
         this.DientesList = result.data;
         console.log(result);
@@ -59,8 +61,8 @@ export class DientesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('formulario cerrado');
-      if (result) {
-        this.getDientes(id);
+      if (result && this.id_odontograma) {
+        this.getDientes(this.id_odontograma);
       }
     });
   }

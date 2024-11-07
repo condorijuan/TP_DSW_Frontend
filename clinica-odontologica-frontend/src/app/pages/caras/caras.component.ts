@@ -71,6 +71,10 @@ export class CarasComponent {
       diente: item.id_diente,
     }
     this.CarasService.updateCara(item.id, cara).subscribe()
+
+    if (this.id_diente) {
+      this.getCaras(this.id_diente);
+    }
   }
 
   Editar(id: number) {
@@ -82,8 +86,8 @@ export class CarasComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('formulario cerrado');
-      if (result) {
-        this.getCaras(id);
+      if (result && this.id_diente) {
+        this.getCaras(this.id_diente);
       }
     });
   }
