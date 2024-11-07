@@ -9,6 +9,10 @@ import { DientesComponent } from './pages/dientes/dientes.component.js';
 import { PacienteComponent } from './pages/paciente/paciente.component.js';
 import { OdontogramaComponent } from './pages/odontograma/odontograma.component.js';
 import { CarasComponent } from './pages/caras/caras.component.js';
+import { AgregareditarimagenComponent } from './pages/agregareditarimagen/agregareditarimagen.component.js';
+import { AgregareditartipoantecedenteComponent } from './pages/agregareditartipoantecedente/agregareditartipoantecedente.component.js';
+import { AgregareditarantecedenteComponent } from './pages/agregareditarantecedente/agregareditarantecedente.component.js';
+
 
 export const routes: Routes = [
     {
@@ -50,10 +54,26 @@ export const routes: Routes = [
     {
         path: 'caras/:id_diente',
         component: CarasComponent
-    }
+    },
 
     /*     {
             path: '**',
             redirectTo: '/home', pathMatch: 'full'
         } */
+    {   
+        path: 'agregareditartipoantecedente',
+        component: AgregareditartipoantecedenteComponent
+    },
+    {
+        path: 'agregareditarimagen',
+        component: AgregareditarimagenComponent
+    }, 
+    {
+        path: 'agregareditarantecedente',
+        component: AgregareditarantecedenteComponent
+    },               
+/*     {
+        path: '**',
+        redirectTo: '/home', pathMatch: 'full'
+    } */
 ];
