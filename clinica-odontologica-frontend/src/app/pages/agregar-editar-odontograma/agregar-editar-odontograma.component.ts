@@ -55,6 +55,7 @@ export class AgregarEditarOdontogramaComponent {
             {
               descripcion: result.data.descripcion,
               link: result.data.link,
+              id_paciente: result.data.paciente
             }
           );
         },
@@ -81,6 +82,7 @@ export class AgregarEditarOdontogramaComponent {
       paciente: this.form.value.id_paciente
     }
     console.log(this.form);
+    console.log(odontograma);
 
     if (this.id !== undefined) {
       this.OdontogramaService.updateOdontograma(this.id, odontograma).subscribe({
