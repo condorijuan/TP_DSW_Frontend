@@ -12,7 +12,7 @@ import { CarasComponent } from './pages/caras/caras.component.js';
 import { AgregareditarimagenComponent } from './pages/agregareditarimagen/agregareditarimagen.component.js';
 import { AgregareditartipoantecedenteComponent } from './pages/agregareditartipoantecedente/agregareditartipoantecedente.component.js';
 import { AgregareditarantecedenteComponent } from './pages/agregareditarantecedente/agregareditarantecedente.component.js';
-
+import { TurnoComponent } from './pages/turno/turno.component.js';
 
 export const routes: Routes = [
     {
@@ -60,20 +60,24 @@ export const routes: Routes = [
             path: '**',
             redirectTo: '/home', pathMatch: 'full'
         } */
-    {   
+    {
         path: 'agregareditartipoantecedente',
         component: AgregareditartipoantecedenteComponent
     },
     {
         path: 'agregareditarimagen',
         component: AgregareditarimagenComponent
-    }, 
+    },
     {
         path: 'agregareditarantecedente',
         component: AgregareditarantecedenteComponent
-    },               
-/*     {
-        path: '**',
-        redirectTo: '/home', pathMatch: 'full'
-    } */
+    },
+    {
+        path: 'turno',
+        component: TurnoComponent
+    }
+    /*     {
+            path: '**',
+            redirectTo: '/home', pathMatch: 'full'
+        } */
 ];
