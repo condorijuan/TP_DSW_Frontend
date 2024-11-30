@@ -4,6 +4,7 @@ import { PacienteService } from '../../services/paciente.service.js';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TurnoService } from '../../services/turno.service.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-turno',
@@ -16,7 +17,7 @@ export class TurnoComponent {
   turnoForm: FormGroup;
   pacientes: any[] = [];
 
-  constructor(private fb: FormBuilder, private pacienteService: PacienteService, private turnoService: TurnoService) {
+  constructor(private fb: FormBuilder, private pacienteService: PacienteService, private turnoService: TurnoService, private router: Router) {
     this.turnoForm = this.fb.group({
       fecha: ['', Validators.required],
       hora: ['', Validators.required],
@@ -46,7 +47,7 @@ export class TurnoComponent {
       fecyhora: this.turnoForm.value.fecha + this.turnoForm.value.hora,
       descripcion: "",
       precio: 0,
-      entrega: "",
+      entrega: "Reservado",
       paciente: this.turnoForm.value.paciente,
       diente: null,
       imagenes: "",
@@ -70,6 +71,7 @@ export class TurnoComponent {
   }
 
   onNoClick() {
-    console.log('Cancelar');
+    //redireccion a la pagina principal
+    this.router.navigate(['/home']);
   }
 }

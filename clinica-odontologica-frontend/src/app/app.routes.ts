@@ -13,6 +13,7 @@ import { AgregareditarimagenComponent } from './pages/agregareditarimagen/agrega
 import { AgregareditartipoantecedenteComponent } from './pages/agregareditartipoantecedente/agregareditartipoantecedente.component.js';
 import { AgregareditarantecedenteComponent } from './pages/agregareditarantecedente/agregareditarantecedente.component.js';
 import { TurnoComponent } from './pages/turno/turno.component.js';
+import { TurnoPacieteComponent } from './pages/turno-paciete/turno-paciete.component.js';
 
 export const routes: Routes = [
     {
@@ -75,6 +76,10 @@ export const routes: Routes = [
     {
         path: 'turno',
         component: TurnoComponent
+    },
+    {
+        path: 'turno-paciete',
+        component: TurnoPacieteComponent
     }
     /*     {
             path: '**',
