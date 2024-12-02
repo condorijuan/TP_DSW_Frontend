@@ -1,0 +1,33 @@
+<p>editar-turno works!</p>
+
+<div id="main-container" class="container">
+    <h1>Editar Turno</h1>
+  <div class="formulario">
+  <form [formGroup]="formTurno" (ngSubmit)="editarTurno()" > 
+    <div>
+      <label for="fecha">Fecha</label>
+      <input type="date" formControlName="fecha" id="fecha">
+    </div>
+    <div>
+      <label for="hora">Hora</label>
+      <input type="time" formControlName="hora" id="hora">
+    </div>
+    <div>
+      <label for="paciente">Paciente</label>
+      <input type="text" formControlName="paciente" id="paciente">
+    </div>
+    <div>
+      <label for="estado">Estado</label>
+      <input type="text" formControlName="estado" id="estado">
+    </div>
+    <div>
+      <label for="precio">Precio</label>
+      <input type="number" formControlName="precio" id="precio">
+    </div>
+    <div class="boton">
+      <button type="submit">Editar</button>
+      <button routerLink="/turno-paciete">Cancelar</button>
+    </div>
+  </form>
+  </div>
+</div>

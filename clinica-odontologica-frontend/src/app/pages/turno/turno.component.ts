@@ -44,6 +44,7 @@ export class TurnoComponent {
       return;
     }
     const turno = {
+      id: null,
       fecyhora: this.turnoForm.value.fecha + this.turnoForm.value.hora,
       descripcion: "",
       precio: 0,

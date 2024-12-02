@@ -10,6 +10,8 @@
           <th>Fecha</th>
           <th>Hora</th>
           <th>Paciente</th>
+          <th>Estado</th>
+          <th>Precio</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -18,9 +20,14 @@
           <td>{{turno.fecyhora.toISOString().split('T')[0]}}</td>
           <td>{{turno.fecyhora.toTimeString().split(' ')[0]}}</td>
           <td>{{turno.paciente?.nombre ?? 'Desconocido'}}</td>
+          <td>{{turno.entrega}}</td>
+          <td *ngIf="turno.precio == 0">No establecido</td>
+          <td *ngIf="turno.precio != 0">{{turno.precio}}</td>         
           <td>
-            <button (click)="editar(turno)">Editar</button>
-            <button (click)="eliminar(turno)">Eliminar</button>
+            <button  id="editar">
+              <a [routerLink]="['/turno-paciete',turno.id]" id="texto">Editar</a>
+            </button>
+            <button (click)="eliminar(turno)" id="eliminar">Eliminar</button>
           </td>
         </tr>
       </tbody>

@@ -14,6 +14,7 @@ import { AgregareditartipoantecedenteComponent } from './pages/agregareditartipo
 import { AgregareditarantecedenteComponent } from './pages/agregareditarantecedente/agregareditarantecedente.component.js';
 import { TurnoComponent } from './pages/turno/turno.component.js';
 import { TurnoPacieteComponent } from './pages/turno-paciete/turno-paciete.component.js';
+import { EditarTurnoComponent } from './pages/editar-turno/editar-turno.component.js';
 
 export const routes: Routes = [
     {
@@ -76,6 +77,10 @@ export const routes: Routes = [
     {
         path: 'turno',
         component: TurnoComponent
+    },
+    {
+        path: 'turno-paciete/:id',
+        component: EditarTurnoComponent
     },
     {
         path: 'turno-paciete',

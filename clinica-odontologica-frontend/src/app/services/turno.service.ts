@@ -34,4 +34,8 @@ export class TurnoService {
   addTurno(turno: turnoInterface): Observable<void> {
     return this.HttpClient.post<void>(`${this.urlturno}`, turno);
   }
+
+  updateTurno(id: number, turno: turnoInterface): Observable<void> {
+    return this.HttpClient.put<void>(`${this.urlturno}/${id}`, turno);
+  }
 }
