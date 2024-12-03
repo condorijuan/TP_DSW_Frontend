@@ -35,6 +35,7 @@ export class EditarTurnoComponent {
       hora: ['', Validators.required],
       paciente: ['', Validators.required],
       estado: ['', Validators.required],
+      descripcion: ['', Validators.required],
       precio: ['', Validators.required],
     });
   }
@@ -58,6 +59,7 @@ export class EditarTurnoComponent {
           hora: fecha.toTimeString().split(' ')[0],
           paciente: result.data.paciente,
           estado: result.data.entrega,
+          descripcion: result.data.descripcion,
           precio: result.data.precio,
         }
       );

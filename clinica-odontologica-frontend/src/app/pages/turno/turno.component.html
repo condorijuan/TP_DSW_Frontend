@@ -13,7 +13,7 @@
       <div class="form-group">
         <label for="paciente">Paciente</label>
         <select id="paciente" name="paciente" formControlName="paciente" required>
-          <option *ngFor="let paciente of pacientes" [value]="paciente.id">{{paciente.nombre}}</option>
+          <option *ngFor="let paciente of pacientes" [value]="paciente.id">{{paciente.nombre}}  {{paciente.apellido}}</option>
         </select>
       </div>
       <div class="form-actions">

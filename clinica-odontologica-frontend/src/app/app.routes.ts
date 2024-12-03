@@ -15,11 +15,16 @@ import { AgregareditarantecedenteComponent } from './pages/agregareditarantecede
 import { TurnoComponent } from './pages/turno/turno.component.js';
 import { TurnoPacieteComponent } from './pages/turno-paciete/turno-paciete.component.js';
 import { EditarTurnoComponent } from './pages/editar-turno/editar-turno.component.js';
+import { LoginComponent } from './pages/login/login.component.js';
 
 export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'tipos-imagen',

@@ -38,4 +38,8 @@ export class TurnoService {
   updateTurno(id: number, turno: turnoInterface): Observable<void> {
     return this.HttpClient.put<void>(`${this.urlturno}/${id}`, turno);
   }
+
+  deleteTurno(id: number): Observable<void> {
+    return this.HttpClient.delete<void>(`${this.urlturno}/${id}`);
+  }
 }

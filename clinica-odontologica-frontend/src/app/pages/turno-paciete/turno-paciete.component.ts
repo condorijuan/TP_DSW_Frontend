@@ -52,8 +52,12 @@ export class TurnoPacieteComponent {
   }
 
   eliminar(Turno: turnoInterface) {
+    if (Turno.id === null) {
+      console.log('No se puede eliminar el turno');
+      return;
+    }
     if (confirm('¿Estas seguro que deseas eliminar el turno?')) {
-      /* this.turnoService.deleteTurno(Turno.id).subscribe({
+      this.turnoService.deleteTurno(Turno.id).subscribe({
         next: (data) => {
           console.log(data);
           this.getTurnos();
@@ -61,7 +65,7 @@ export class TurnoPacieteComponent {
         error: (error) => {
           console.error(error);
         }
-      }); */
+      });
       console.log('Eliminado');
     }
   }
