@@ -1,1 +1,71 @@
-<p>home works!</p>
+<header class="header">
+
+  <div class="logo">{{ title }}</div>
+  <input type="checkbox" id="toggle"> <label for="toggle">
+    <div class="logo">Menu</div>
+  </label>
+
+  <nav class="navigation">
+
+    <ul>
+      <li><a routerLink="/home">Inicio</a></li>
+      <li><a >Turno</a></li>
+      <li><a >A B M Cs</a>
+        <ul>
+          <li><a >Turno</a>
+            <ul>
+              <li><a routerLink="/turno">Alta</a></li>
+              <li><a routerLink="/turno-paciete">Turnos y Pacientes</a></li>
+              
+            </ul>
+          </li>
+          <li><a >Paciente</a>
+            <ul>
+              <li><a >Alta</a></li>
+              <li><a routerLink="/paciente">Personas</a></li>
+
+            </ul></li>
+          <li><a routerLink="/odontograma">Odontogramas</a></li>
+          <li><a >Tipos Imagen</a>
+            <ul>
+              <li><a >Alta</a></li>
+              <li><a routerLink="/tipos-imagen">Tipos</a></li>
+
+            </ul></li>
+          <li><a >Imagen</a>
+            <ul>
+              <li><a >Alta</a></li>
+              <li><a routerLink="/imagen">Imagenes</a></li>
+            </ul></li>
+          <li><a >Tipo Antecedente</a>
+            <ul>
+              <li><a >Alta</a></li>
+              <li><a routerLink="/tipo-antecedente">Tipos Antecedente</a></li>
+            </ul>
+          </li>
+          <li><a >Antecedente</a>
+            <ul>
+              <li><a >Alta</a></li>
+              <li><a routerLink="/antecedente">Antecedentes</a></li>
+            </ul>
+          </li>
+        </ul></li>
+      <li><a >Informes</a>
+        <ul>
+          <li><a >Pacientes</a></li>
+          <li><a >Antecedentes</a></li>
+          <li><a >Imagenes</a></li>
+          <li><a >Turnos</a>
+            <ul>
+              <li><a >Turnos no Disponibles</a></li>
+              <li><a >Turnos Temp</a></li>								
+            </ul>						
+          </li>
+          <li><a >Tipos Imagenes</a></li>
+        </ul></li>
+      <li><a (click)="logout()">Cerrar Sesion</a></li>
+    </ul>
+  </nav>
+
+</header>
+<router-outlet/>

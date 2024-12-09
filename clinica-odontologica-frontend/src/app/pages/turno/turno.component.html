@@ -5,16 +5,34 @@
       <div class="form-group">
         <label for="fecha">Fecha</label>
         <input type="date" id="fecha" name="fecha" formControlName="fecha" required>
+        <small *ngIf="turnoForm.get('fecha')?.errors?.['required'] && turnoForm.get('fecha')?.touched">
+          *Este campo es obligatorio
+        </small>
+        <small class="error-message" *ngIf="turnoForm.get('fecha')?.errors?.['busyDate'] && turnoForm.get('fecha')?.touched">
+          *No hay turnos disponibles para esta fecha.
+        </small>
       </div>
       <div class="form-group">
         <label for="hora">Hora</label>
         <input type="time" id="hora" name="hora" formControlName="hora" required>
+        <small *ngIf="turnoForm.get('hora')?.errors?.['required'] && turnoForm.get('hora')?.touched">
+          *Este campo es obligatorio
+        </small>
+        <small *ngIf="turnoForm.get('hora')?.errors?.['pattern'] && turnoForm.get('hora')?.touched">
+          *Formato de hora no válido
+        </small>
+        <small *ngIf="turnoForm?.errors?.['busyHour'] && turnoForm.get('hora')?.touched">
+          *Horario ocupado.
+        </small>
       </div>
       <div class="form-group">
         <label for="paciente">Paciente</label>
         <select id="paciente" name="paciente" formControlName="paciente" required>
           <option *ngFor="let paciente of pacientes" [value]="paciente.id">{{paciente.nombre}}  {{paciente.apellido}}</option>
         </select>
+        <small *ngIf="turnoForm.get('paciente')?.errors?.['required'] && turnoForm.get('paciente')?.touched">
+          *Este campo es obligatorio
+        </small>
       </div>
       <div class="form-actions">
         <button type="submit" class="btn btn-primary" cdkFocusInitial>Guardar</button>

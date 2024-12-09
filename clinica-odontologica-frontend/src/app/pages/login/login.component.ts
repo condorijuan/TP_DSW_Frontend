@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +13,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  @Input() isAuth!: boolean;
+  @Output() isAuthChange = new EventEmitter<boolean>();
   loginForm: FormGroup;
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -20,6 +22,7 @@ export class LoginComponent {
       contraseña: ['', Validators.required]
     });
   }
+  notFound!: boolean;
 
   ngOnInit(): void {
   }
@@ -29,15 +32,16 @@ export class LoginComponent {
       console.log('Formulario invalido');
       return;
     }
-    const profecional = this.loginForm.value;
-    console.log(profecional);
-    this.authService.login(profecional).subscribe({
-      next: (data) => {
-        console.log('Login correcto');
-        console.log(data);
-        this.router.navigate(['/home']);
+    const profesional = this.loginForm.value;
+    console.log(profesional);
+    this.authService.login(profesional).subscribe({
+      next: (result) => {
+        console.log(result);
+        localStorage.setItem('user', JSON.stringify(result.data))
+        this.isAuthChange.emit(true);
       },
       error: (error) => {
+        this.notFound = true;
         console.error(error, 'Error en el login');
       }
     });

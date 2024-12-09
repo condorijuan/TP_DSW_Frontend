@@ -2,7 +2,8 @@ import { PacienteInterface } from './paciente.interface';
 
 export interface turnoInterface {
   id: number | null,
-  fecyhora: Date,
+  fecha: Date,
+  hora: string,
   descripcion: string,
   precio: number,
   entrega: string,

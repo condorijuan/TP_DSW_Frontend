@@ -20,7 +20,8 @@ export class EditarTurnoComponent {
   formTurno: FormGroup;
   turnoInfo: turnoInterface = {
     id: null,
-    fecyhora: new Date(),
+    fecha: new Date(),
+    hora: '',
     descripcion: "",
     precio: 0,
     entrega: "",
@@ -73,7 +74,8 @@ export class EditarTurnoComponent {
     }
     const turno = {
       id: Number(this.id_turno),
-      fecyhora: this.formTurno.value.fecha + this.formTurno.value.hora,
+      fecha: this.formTurno.value.fecha,
+      hora: this.formTurno.value.hora,
       descripcion: this.formTurno.value.descripcion,
       precio: this.formTurno.value.precio,
       entrega: this.formTurno.value.estado,

@@ -11,8 +11,8 @@ export class TurnoService {
 
   constructor(private HttpClient: HttpClient) { }
 
-  getTurnos(): Observable<any> {
-    return this.HttpClient.get(this.urlturno).pipe(res => res);
+  getTurnos(idProfesional: number | null): Observable<any> {
+    return this.HttpClient.get(`${this.urlturno}/${idProfesional}`).pipe(res => res);
   }
 
   getTurnosbyId(id: number): Observable<any> {

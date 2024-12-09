@@ -1,4 +1,3 @@
-<p>turno-paciete works!</p>
 <div class="ListaTurno">
   <div>
     <h1>Turnos</h1>
@@ -17,8 +16,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let turno of turnos">
-          <td>{{turno.fecyhora.toISOString().split('T')[0]}}</td>
-          <td>{{turno.fecyhora.toTimeString().split(' ')[0]}}</td>
+          <td>{{turno.fecha}}</td>
+          <td>{{turno.hora}}</td>
           <td>{{turno.paciente?.nombre ?? 'Desconocido'}}</td>
           <td>{{turno.entrega}}</td>
           <td *ngIf="turno.precio == 0">No establecido</td>

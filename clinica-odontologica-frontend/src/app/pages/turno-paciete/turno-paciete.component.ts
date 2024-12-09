@@ -4,6 +4,7 @@ import { turnoInterface } from '../../interfaces/turno.interface.js';
 import { CommonModule } from '@angular/common';
 import { PacienteService } from '../../services/paciente.service.js';
 import { RouterLink } from '@angular/router';
+import { profecionalInterface } from '../../interfaces/profecional.interface.js';
 @Component({
   selector: 'app-turno-paciete',
   standalone: true,
@@ -14,16 +15,25 @@ import { RouterLink } from '@angular/router';
 export class TurnoPacieteComponent {
   turnos: turnoInterface[] = [];
   pacientes: any[] = [];
+  profesional: profecionalInterface = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(private turnoService: TurnoService, private pacienteService: PacienteService) { }
 
   ngOnInit() {
     this.getTurnos();
+    console.log(this.turnos)
   }
 
   getTurnos() {
     //despues cambiar por getTurnosbyProfecional
-    this.turnoService.getTurnos().subscribe({
-      next: (data) => {
+    this.turnoService.getTurnos(this.profesional.id).subscribe({
+      next: (result) => {
+        this.turnos = result.data;
+      },
+      error: (error) => {
+        console.log(error)
+      }
+
+      /* 
         const Listaturnos = data.data;
         this.pacienteService.getPacientes().subscribe({
           next: (ListaPaciente) => {
@@ -48,6 +58,7 @@ export class TurnoPacieteComponent {
       error: (error) => {
         console.error(error);
       }
+    */
     });
   }
 
