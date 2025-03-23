@@ -13,6 +13,6 @@ import { HomeComponent } from "./pages/home/home.component";
 })
 export class AppComponent {
   isAuth!: boolean;
-
-  constructor(){} 
+  isAdmin!: boolean;
+  constructor() { }
 }

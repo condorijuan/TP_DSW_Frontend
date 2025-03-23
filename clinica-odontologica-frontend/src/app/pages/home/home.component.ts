@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from '../../services/auth.service.js';
 
 @Component({
   selector: 'app-home',
@@ -15,10 +16,13 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 export class HomeComponent {
   title = 'Odonto System';
   @Input() isAuth!: boolean;
+  @Input() isAdmin!: boolean;
   @Output() isAuthChange = new EventEmitter<boolean>();
 
-  logout(){
-    localStorage.removeItem('user');
+  constructor(private authService: AuthService) { }
+
+  logout() {
+    this.authService.logout();
     this.isAuthChange.emit(false);
   }
 }

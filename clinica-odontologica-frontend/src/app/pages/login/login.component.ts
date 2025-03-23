@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { UsuarioService } from '../../services/usuario.service.js';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,10 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent {
   @Input() isAuth!: boolean;
+  @Input() isAdmin!: boolean;
   @Output() isAuthChange = new EventEmitter<boolean>();
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private usuarioService: UsuarioService) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       contraseña: ['', Validators.required]
@@ -36,16 +38,26 @@ export class LoginComponent {
     console.log(profesional);
     this.authService.login(profesional).subscribe({
       next: (result) => {
-        console.log(result);
-        localStorage.setItem('user', JSON.stringify(result.data))
+        localStorage.setItem('token', result.token);
+        /* localStorage.setItem('user', JSON.stringify(result.data)) */
+        if (result.data.tipo === 'admin') {
+          this.isAdmin = true;
+        }
+        if (result.data.profesional !== undefined) {
+          this.usuarioService.getProfesional(result.data.profesional.id).subscribe({
+            next: (result) => {
+              localStorage.setItem('user', JSON.stringify(result.data));
+            }
+          });
+        }
         this.isAuthChange.emit(true);
+        this.router.navigate(['/home']);
       },
       error: (error) => {
         this.notFound = true;
         console.error(error, 'Error en el login');
       }
     });
-    console.log(localStorage.getItem('token'));
     console.log('Formulario enviado');
   }
 }

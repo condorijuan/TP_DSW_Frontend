@@ -9,22 +9,21 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   private isAuth = false;
-  private URL: string = 'http://localhost:8080/api/profesional';
+  private isAdmin = false;
+  private URL_LOGIN: string = 'http://localhost:8080/api/usuario';
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getOneProfesional(id: number): Observable<any> {
-    return this.http.get<any>(`${this.URL}/${id}`).pipe(res => res
-    );
-  }
-
   login(profecional: profecionalInterface): Observable<any> {
-    return this.http.post<any>(`${this.URL}/login`, profecional)
+    /* return this.http.post<any>(`${this.URL}/login`, profecional) */
+    return this.http.post<any>(`${this.URL_LOGIN}/login`, profecional);
   }
 
   logout() {
+    localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.isAuth = false;
+    this.isAdmin = false;
     this.router.navigate(['/login']);
   }
 

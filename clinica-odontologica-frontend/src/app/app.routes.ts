@@ -16,11 +16,18 @@ import { TurnoComponent } from './pages/turno/turno.component.js';
 import { TurnoPacieteComponent } from './pages/turno-paciete/turno-paciete.component.js';
 import { EditarTurnoComponent } from './pages/editar-turno/editar-turno.component.js';
 import { LoginComponent } from './pages/login/login.component.js';
+import { authGuard } from './guards/auth.guard.js';
+import { roleguardGuard } from './guards/roleguard.guard.js';
 
 export const routes: Routes = [
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
+    },
+    {
+        path: '', redirectTo: '/home', pathMatch: 'full'
     },
     {
         path: 'login',
@@ -28,71 +35,93 @@ export const routes: Routes = [
     },
     {
         path: 'tipos-imagen',
-        component: TiposImagenComponent
+        component: TiposImagenComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
+
     {
         path: 'imagen',
-        component: ImagenComponent
+        component: ImagenComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'tipo-antecedente',
-        component: TipoAntecedenteComponent
+        component: TipoAntecedenteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
     {
         path: 'antecedente',
-        component: AntecedenteComponent
+        component: AntecedenteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'agregareditartipoimagen',
-        component: AgregareditartipoimagenComponent
+        component: AgregareditartipoimagenComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
     {
         path: 'dientes/:id_odontograma',
-        component: DientesComponent
+        component: DientesComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'paciente',
-        component: PacienteComponent
+        component: PacienteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'odontograma',
-        component: OdontogramaComponent
+        component: OdontogramaComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'caras/:id_diente',
-        component: CarasComponent
+        component: CarasComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
-
-    /*     {
-            path: '**',
-            redirectTo: '/home', pathMatch: 'full'
-        } */
     {
         path: 'agregareditartipoantecedente',
-        component: AgregareditartipoantecedenteComponent
+        component: AgregareditartipoantecedenteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
     {
         path: 'agregareditarimagen',
-        component: AgregareditarimagenComponent
+        component: AgregareditarimagenComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
     {
         path: 'agregareditarantecedente',
-        component: AgregareditarantecedenteComponent
+        component: AgregareditarantecedenteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin'] }
     },
     {
         path: 'turno',
-        component: TurnoComponent
+        component: TurnoComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'turno-paciete/:id',
-        component: EditarTurnoComponent
+        component: EditarTurnoComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     },
     {
         path: 'turno-paciete',
-        component: TurnoPacieteComponent
+        component: TurnoPacieteComponent,
+        canActivate: [authGuard, roleguardGuard],
+        data: { role: ['admin', 'cliente'] }
     }
-    /*     {
-            path: '**',
-            redirectTo: '/home', pathMatch: 'full'
-        } */
 ];
